@@ -11,7 +11,7 @@ const port = process.env.PORT ? process.env.PORT : 3000;
 app.use(express.json());
 
 
-//Conexion con Base de datos
+//Conexion con BD
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
