@@ -1,7 +1,7 @@
 {
   "name": "modulo4-unidad2",
   "version": "1.0.0",
-  "description": "Agregar autenticación por jwt al desarrollo realizado en la unidad anterior.",
+  "description": "Agregar autenticación por JWT al desarrollo realizado en la unidad anterior.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
