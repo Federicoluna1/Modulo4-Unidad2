@@ -1,7 +1,6 @@
 const {connection} = require('../app');
 const util = require('util');
-
-const qy = util.promisify(connection.query).bind(connection);
+const query = util.promisify(connection.query).bind(connection);
 
 const verificarLogin = (req, res, next ) => {
     try {         
