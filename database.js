@@ -20,6 +20,4 @@ connection.connect((error)=>{
 
 const qy = util.promisify(connection.query).bind(connection);
 
-exports.connection = connection;
-
 module.exports = qy;

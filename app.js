@@ -20,6 +20,11 @@ app.use((req, res, next)=>{
     next(error)
 })
 
+app.use((err, req, res, next)=>{
+    if(err){consolé.log(err)}
+    res.json({'Error': e.message});
+    });
+
 app.listen (port, ()=>{
     console.log ('Servidor escuchando en el puerto port')
 });
