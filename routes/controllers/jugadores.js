@@ -1,6 +1,4 @@
-const {connection} = require('../app');
-const util = require('util');
-const query = util.promisify(connection.query).bind(connection);
+const qy = require('../../database');
 
 const verificarLogin = (req, res, next ) => {
     try {         

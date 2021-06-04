@@ -1,6 +1,4 @@
-const {connection} = require('../app');
-const util = require('util');
-const query = util.promisify(connection.query).bind(connection);
+const qy = require('../../database');
 
 const verificarLogin = (req, res, next ) => {
     try {         
@@ -43,7 +41,7 @@ const equiposPost = async (req, res) => {
         queryPost = 'INSERT INTO equipos (nombre) VALUE (?)';
         respuesta = await query(queryPost);
         console.log(respuesta);
-        res.status(200).send(respuesta);
+        res.status(200).json({"Respuesta": respuesta});
     }
     catch(e){
         console.error(e.message);
