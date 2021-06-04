@@ -10,4 +10,4 @@ router.get('/:id',equiposGetById);
 router.put('/:id', equiposPutById);
 router.delete('/:id', equiposDeleteById);
 
-modules.exports = router
+module.exports = router

@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router()
 
-const {jugadoresPost, jugadoresGet, jugadoresGetById, jugadoresGetByEquipos, jugadoresGetByEquiposAndId, jugadoresPutById, jugadoresDeleteById} = require('./routes/jugadores')
+const {jugadoresPost, jugadoresGet, jugadoresGetById, jugadoresGetByEquipos, jugadoresGetByEquiposAndId, jugadoresPutById, jugadoresDeleteById} = require('./controllers/jugadores')
 
 router.post('/', jugadoresPost);
 router.get('/', jugadoresGet);
