@@ -10,9 +10,11 @@ app.use(express.json());
 
 const equiposRuta = require('./routes/equiposRuta');
 const jugadoresRuta = require('./routes/jugadoresRuta');
+const webRuta = require('./routes/webRuta');
 
 app.use('/api/equipos', equiposRuta);
 app.use('/api/jugadores', jugadoresRuta);
+app.use('/api/web', webRuta);
 
 app.get('/', (req, res)=>{
     res.json({mensaje: "hola"})
@@ -25,12 +27,13 @@ app.use((req, res, next)=>{
 })
 
 app.use((err, req, res, next)=>{
-    if(err){consolé.log(err)}
-    res.json({'Error': e.message});
-});
+    if(err){
+    console.log(err)
+    res.json({Error: err.message});
+    }
+})
 
 app.listen (port, ()=>{
     console.log ('Servidor escuchando en el puerto' + port)
 })
-
 
