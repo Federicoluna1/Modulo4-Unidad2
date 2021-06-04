@@ -14,6 +14,10 @@ const jugadoresRuta = require('./routes/jugadoresRuta');
 app.use('/api/equipos', equiposRuta);
 app.use('/api/jugadores', jugadoresRuta);
 
+app.get('/', (req, res)=>{
+    res.json({mensaje: "hola"})
+ })
+
 app.use((req, res, next)=>{
     const error = new Error('No se encontro la pagina');
     error.status = 404;
@@ -23,10 +27,10 @@ app.use((req, res, next)=>{
 app.use((err, req, res, next)=>{
     if(err){consolé.log(err)}
     res.json({'Error': e.message});
-    });
+});
 
 app.listen (port, ()=>{
-    console.log ('Servidor escuchando en el puerto port')
-});
+    console.log ('Servidor escuchando en el puerto' + port)
+})
 
 
