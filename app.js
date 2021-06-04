@@ -14,7 +14,7 @@ const webRuta = require('./routes/webRuta');
 
 app.use('/api/equipos', equiposRuta);
 app.use('/api/jugadores', jugadoresRuta);
-app.use('/api/web', webRuta);
+app.use('/', webRuta);
 
 app.get('/', (req, res)=>{
     res.json({mensaje: "hola"})
