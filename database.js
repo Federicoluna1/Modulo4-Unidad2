@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password:'',
-    database: 'planteles'
+    database: 'login y registro'
 });
 
 
@@ -20,4 +20,4 @@ connection.connect((error)=>{
 
 const qy = util.promisify(connection.query).bind(connection);
 
-module.exports = qy;
+module.exports = qy
