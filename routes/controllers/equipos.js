@@ -1,29 +1,5 @@
 const qy = require('../../database');
 
-const verificarLogin = (req, res, next ) => {
-    try {         
-    const token = req.headers['authorization']
-        
-    if(!token){
-        throw new Error('No estas logueado');
-    } 
-    
-    token = token.replace('Bearer', '')
-
-    jwt.verify(token, 'Secret', (err, user) => { 
-    if (err) {
-        throw new Error('Token invalido');
-    }
-});
-
-    next();
-}
-catch(e){
-            console.error(e.message);
-                res.status(500).send({'Error': e.message});
-    };
-}
-
 //Crear equipo
 const equiposPost = async (req, res) => {
     try{
@@ -38,10 +14,10 @@ const equiposPost = async (req, res) => {
             res.status(400).send('¡Ya existe el equipo!');
         };
 
-        queryPost = 'INSERT INTO equipos (nombre) VALUE (?)';
-        respuesta = await query(queryPost);
+        query = 'INSERT INTO equipos (nombre) VALUE (?)';
+        respuesta = await qy(query);
         console.log(respuesta);
-        res.status(200).json({"Respuesta": respuesta});
+        res.status(200).json(respuesta);
     }
     catch(e){
         console.error(e.message);
@@ -55,7 +31,7 @@ const equiposGet = async (req, res) => {
     try{
         const query = 'SELECT * FROM equipos';
         const respuesta =  await qy(query);
-            res.status(200).json({"Respuesta": respuesta});
+            res.status(200).json(respuesta);
 
     }
     catch(e){
