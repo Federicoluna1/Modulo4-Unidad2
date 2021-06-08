@@ -18,15 +18,6 @@ app.use('/api/equipos', equiposRuta);
 app.use('/api/jugadores', jugadoresRuta);
 app.use('/', webRuta);
 
-app.get('/', (req, res)=>{
-    res.json({mensaje: "hola"})
- })
-
-app.use((req, res, next)=>{
-    const error = new Error('No se encontro la pagina');
-    error.status = 404;
-    next(error)
-})
 
 app.use((err, req, res, next)=>{
     if(err){
