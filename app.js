@@ -1,32 +1,35 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const unless = require('express-unless');
-
 const app = express();
-const port = process.env.PORT ? process.env.PORT : 3000;
-
-app.use(express.static('${__dirname}/public'));
-
 app.use(express.json());
 
-const equiposRuta = require('./routes/equiposRuta');
-const jugadoresRuta = require('./routes/jugadoresRuta');
-const webRuta = require('./routes/webRuta');
+const PORT = process.env.PORT ? process.env.PORT : 3000;
 
-app.use('/api/equipos', equiposRuta);
-app.use('/api/jugadores', jugadoresRuta);
-app.use('/', webRuta);
+//Rutas importadas 
+const {equiposPost, equiposGet, equiposGetById, equiposPutById, equiposDeleteById} = require('./routes/equipos')
+const {jugadoresPost, jugadoresGet, jugadoresGetById, jugadoresGetByEquipos, jugadoresGetByEquiposAndId, jugadoresPutById, jugadoresDeleteById} = require('./routes/jugadores')
+const {registroPost, loginPost} = require('./registroLogin/registroLogin');
 
+//Request Login
+app.post('/registro', registroPost);
+app.post('/login', loginPost);
 
-app.use((err, req, res, next)=>{
-    if(err){
-    console.log(err)
-    res.json({Error: err.message});
-    }
-})
+//Requests de Equipos
+app.post('/equipos',equiposPost);
+app.get('/equipos',equiposGet);
+app.get('/equipos/:id',equiposGetById);
+app.put('/equipos/:id', equiposPutById);
+app.delete('/equipos/:id', equiposDeleteById);
 
-app.listen (port, ()=>{
-    console.log ('Servidor escuchando en el puerto' + port)
-})
+//Requests de Jugadores
+app.post('/jugadores', jugadoresPost);
+app.get('/jugadores', jugadoresGet);
+app.get('/jugadores/:id', jugadoresGetById);
+app.get('/jugadores/:id/equipos', jugadoresGetByEquipos);
+app.get('/jugadores/:id/equipos/:id', jugadoresGetByEquiposAndId);
+app.put('/jugadores/:id', jugadoresPutById);
+app.delete('/jugadores/:id', jugadoresDeleteById);
 
+app.listen (PORT, ()=>{
+    console.log ('Servidor escuchando en el puerto' + PORT)
+});
+        
